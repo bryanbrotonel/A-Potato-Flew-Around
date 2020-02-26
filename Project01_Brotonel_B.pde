@@ -6,7 +6,11 @@
 */
 
 boolean lose = false;
+int cloudsLimit = 5;
+int numberOfClouds = 0;
+
 float xStartPosition, yStartPosition;
+int time;
 
 Character frank;
 
@@ -16,7 +20,7 @@ float easing = 0.05;
 
 void setup() {
     frameRate(180);
-
+      smooth();
     size(960, 720);
 
     xStartPosition = width / 2;
@@ -27,7 +31,9 @@ void setup() {
 
 void draw() {
     background(255, 204, 0);
+
     drawClouds();
+
     pushMatrix();
 
     translate(xStartPosition, yStartPosition);
@@ -44,12 +50,8 @@ void keyPressed() {
 }
 
 void drawClouds() {
-    int numberOfClouds = 0;
-    int cloudsLimit = 10;
 
-    int time = millis();
-
-    if (frameCount % 1000 == 0 && numberOfClouds < cloudsLimit) {
+    if (millis() - time >= 5000 && numberOfClouds < cloudsLimit) {
 
         float randomPosition = random(0, width - 10);
         float randomWidth = random(50, 200);
@@ -59,6 +61,9 @@ void drawClouds() {
         Cloud cloud = new Cloud(randomPosition, randomWidth, randomHeight, randomType);
 
         clouds.add(new Cloud(randomPosition, randomWidth, randomHeight, randomType));
+        println("numberOfClouds: "+numberOfClouds);
+
+        time = millis();
         numberOfClouds++;
     }
 
