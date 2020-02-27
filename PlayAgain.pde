@@ -6,16 +6,8 @@ int playAgainHeight = 250;
 int halfPlayAgainWidth = playAgainWidth / 2;
 int halfPlayAgainHeight = playAgainHeight / 2;
 
-    int buttonWidth = 75;
-    int buttonHeight = 25;
-
-    int halfBttonWidth = buttonWidth / 2;
-    int halfButtonHeight = buttonHeight / 2;
-
 
 void playAgain() {
-
-    // println("gameLose: "+gameLose);
 
     int playAgainXPos = !gameLose ? width : width / 2 - halfPlayAgainWidth;
     int playAgainYPos = !gameLose ? height : height / 2 - halfPlayAgainHeight;
@@ -44,6 +36,12 @@ void playAgain() {
 }
 
 void playAgainButton(int xPosition, int yPosition) {
+
+    int buttonWidth = 75;
+    int buttonHeight = 25;
+
+    int halfBttonWidth = buttonWidth / 2;
+    int halfButtonHeight = buttonHeight / 2;
 
     String playAgain = "Play Again";
     int padding = 25;
@@ -74,14 +72,12 @@ void restartGame() {
     println("restart game");
 
     potatos.clear();
-
     clouds.clear();
-
-    xStartPosition = width / 2;
-    yStartPosition = height * 0.7;
 
     character.setXPosition(0);
     character.setYPosition(0);
+
+    gameScore = 0;
 
     gameLose = false;
 }

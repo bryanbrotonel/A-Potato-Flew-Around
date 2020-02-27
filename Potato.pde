@@ -32,6 +32,11 @@ public class Potato {
 
         if (yPosition < height + potatoHeight)
             yPosition += potatoSpeed;
+        else {
+            // println("potatos flew!");
+            potatoFlew = true;
+            potatoSpeed = 0;
+        }
         
         stroke(0);  
         fill(potatoColour);
@@ -90,7 +95,7 @@ public class Potato {
         return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterWidth) / 2;
     }
 
-    boolean getPotato() {
+    boolean getPotatoFlew() {
         return potatoFlew;
     }
     

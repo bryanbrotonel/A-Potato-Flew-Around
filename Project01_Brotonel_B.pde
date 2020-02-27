@@ -8,6 +8,7 @@ boolean gameLose = false;
 boolean gameRestart = false;
 int gameScore = 0;
 int numberOfClouds = 0;
+int potatosFlew = 0;
 int cloudsLimit = 5;
 
 float xStartPosition, yStartPosition;
@@ -51,10 +52,14 @@ void game() {
     popMatrix();
 
     playAgain();
-
+    
+    textAlign(LEFT);
     text(gameLose ? "true" : "false", 100,100);
     text(character.getXPosition(), 100, 110);
     text(character.getYPosition(), 100, 120);
+    text("Potato size:" + potatos.size(), 100, 130);
+    text("Potatos flew: " + potatosFlew, 100, 140);
+
 }
 
 void showScore() {
@@ -89,10 +94,16 @@ void drawPotatos() {
         int random = (int) random(1, 3);
         potatos.add(new Potato((random)));
     }
+  for (int i = potatos.size()-1; i >= 0; i--) {
+        Potato potato = potatos.get(i);
 
-    for (Potato potato: potatos) {
         potato.display();
-    }
+
+        if (potato.getPotatoFlew()) {
+            potatos.remove(i);
+            gameScore++;
+        }
+  }
 }
 
 void drawClouds() {
