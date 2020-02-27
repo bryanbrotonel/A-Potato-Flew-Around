@@ -1,4 +1,4 @@
-class Character {
+public class Character {
 
     private float characterWidth;
     private float characterHeight;
@@ -10,7 +10,7 @@ class Character {
         characterHeight = height;
     }
 
-    void drawCharacter() {
+    final void drawCharacter() {
 
         pushMatrix();
         
@@ -26,7 +26,7 @@ class Character {
         popMatrix();
     }
 
-    void characterMovement(int keyCode) {
+    final void characterMovement(int keyCode) {
         float movement = 10;
         float xBoundary = (height / 2) - 280;
         float yBoundary = (width / 2) - 200;
@@ -57,4 +57,21 @@ class Character {
         }
     
     }
+    
+    final float getXPosition() {
+        return xPosition;
+    }
+
+    final float getYPosition() {
+        return yPosition;
+    }
+
+    final float getCharacterWidth() {
+        return characterWidth;
+    }
+
+    final float getCharacterHeight() {
+        return characterHeight;
+    }
+    
 }

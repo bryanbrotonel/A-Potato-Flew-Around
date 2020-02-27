@@ -5,6 +5,7 @@ public class Potato {
     private float yPosition;
     private float potatoWidth;
     private float potatoHeight;
+    private float potatoSpeed;
     private int potatoLevel;
 
     Potato(int level) {
@@ -12,17 +13,25 @@ public class Potato {
 
         float[] potatoSize = potatoSize(level);
         
-        potatoWidth = potatoSize[0];
-        potatoHeight = potatoSize[1];
         xPosition = random(0, width - 10);
         yPosition = -height;
+        potatoWidth = potatoSize[0];
+        potatoHeight = potatoSize[0];
+        potatoSpeed = speed(potatoLevel);
     }
     
     final void display() {
+
+        if (potatoCollision())
+            gameLose = true;
+
+        if (gameLose)
+            potatoSpeed = 0;
+
         color potatoColour = potatoColour(potatoLevel);
 
         if (yPosition < height + potatoHeight)
-            yPosition += speed(potatoLevel);
+            yPosition += potatoSpeed;
         
         stroke(0);  
         fill(potatoColour);
@@ -70,7 +79,19 @@ public class Potato {
         }
     }
 
+    boolean potatoCollision() {
+
+        float characterXPosition = xStartPosition + character.getXPosition();
+        float characterYPosition = yStartPosition + character.getYPosition();
+        float characterWidth = character.getCharacterWidth();
+        float characterHeight = character.getCharacterHeight();
+
+
+        return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterWidth) / 2;
+    }
+
     boolean getPotato() {
         return potatoFlew;
     }
+    
 }

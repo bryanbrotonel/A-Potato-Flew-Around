@@ -5,7 +5,8 @@
     INFO 3225 S10 
 */
 
-boolean lose = false;
+boolean gameLose = false;
+int gameScore = 0;
 int numberOfClouds = 0;
 int cloudsLimit = 5;
 
@@ -15,7 +16,7 @@ int time;
 ArrayList<Cloud> clouds = new ArrayList<Cloud>();
 ArrayList<Potato> potatos = new ArrayList<Potato>();
 
-Character frank;
+Character character;
 
 void setup() {
     frameRate(180);
@@ -25,7 +26,7 @@ void setup() {
     xStartPosition = width / 2;
     yStartPosition = height * 0.7;
 
-    frank = new Character(40, 10);
+    character = new Character(40, 10);
 }
 
 void draw() {
@@ -38,16 +39,22 @@ void draw() {
 
     translate(xStartPosition, yStartPosition);
 
-    frank.drawCharacter();
+    character.drawCharacter();
 
     popMatrix();
 }
 
+void game() {
+    if (gameLose)
+        println("you lost!");
+}
+
 void keyPressed() {
   if (key == CODED) {
-      frank.characterMovement(keyCode);
+      character.characterMovement(keyCode);
   }
 }
+
 
 void drawPotatos() {
 
@@ -70,7 +77,6 @@ void drawClouds() {
         time = millis();
         numberOfClouds++;
 
-        println("clouds.size(): "+clouds.size());
     }
 
     for (Cloud cloud : clouds)
