@@ -12,15 +12,14 @@ int numberOfClouds = 0;
 float xStartPosition, yStartPosition;
 int time;
 
-Character frank;
-
 ArrayList<Cloud> clouds = new ArrayList<Cloud>();
+ArrayList<Potato> potatos = new ArrayList<Potato>();
 
-float easing = 0.05;
+Character frank;
 
 void setup() {
     frameRate(180);
-      smooth();
+    smooth();
     size(960, 720);
 
     xStartPosition = width / 2;
@@ -33,6 +32,7 @@ void draw() {
     background(255, 204, 0);
 
     drawClouds();
+    drawPotatos();
 
     pushMatrix();
 
@@ -47,6 +47,18 @@ void keyPressed() {
   if (key == CODED) {
       frank.characterMovement(keyCode);
   }
+}
+
+void drawPotatos() {
+
+    if (potatos.size() < 5) {
+        int random =  (int) random(1,3);
+        potatos.add(new Potato((random)));
+    }
+
+    for (Potato potato : potatos) {
+        potato.display();
+    }
 }
 
 void drawClouds() {
