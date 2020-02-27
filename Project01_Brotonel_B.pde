@@ -6,8 +6,8 @@
 */
 
 boolean lose = false;
-int cloudsLimit = 5;
 int numberOfClouds = 0;
+int cloudsLimit = 5;
 
 float xStartPosition, yStartPosition;
 int time;
@@ -65,21 +65,14 @@ void drawClouds() {
 
     if (millis() - time >= 5000 && numberOfClouds < cloudsLimit) {
 
-        float randomPosition = random(0, width - 10);
-        float randomWidth = random(50, 200);
-        float randomHeight = random(50, 75);
-        float randomType = random(3, 8);
-
-        Cloud cloud = new Cloud(randomPosition, randomWidth, randomHeight, randomType);
-
-        clouds.add(new Cloud(randomPosition, randomWidth, randomHeight, randomType));
-        println("numberOfClouds: "+numberOfClouds);
+        clouds.add(new Cloud());
 
         time = millis();
         numberOfClouds++;
+
+        println("clouds.size(): "+clouds.size());
     }
 
-    for (Cloud cloud : clouds) {
+    for (Cloud cloud : clouds)
         cloud.display();
-    }
 }

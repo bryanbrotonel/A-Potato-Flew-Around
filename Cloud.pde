@@ -6,12 +6,14 @@ class Cloud {
     private float cloudType;
     private float yPosition;
 
-    Cloud(float position, float width, float height, float type) {
-        cloudWidth = width;
-        cloudHeight = height;
-        xPosition = position;
-        yPosition = 0 - height;
-        cloudType = type;
+    Cloud() {
+
+        xPosition = random(0, width - 10);
+        yPosition = -height;
+        cloudWidth = random(50, 200);
+        cloudHeight = random(50, 75);
+        cloudType = random(3, 8);
+
     }
     
     void display() {
