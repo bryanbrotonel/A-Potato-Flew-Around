@@ -9,11 +9,12 @@ void setGradient(int x, int y, float w, float h, color c1, color c2) {
     } 
 }
 
-boolean overRect(int x, int y, int width, int height) {
-    if (mouseX >= x && mouseX <= x+width && 
-      mouseY >= y && mouseY <= y+height) {
-    return true;
-  } else {
-    return false;
-  }
+boolean overRect(int x, int y, int rectWidth, int rectHeight) {
+
+    if (mouseX >= x && mouseX <= x + rectWidth &&
+        mouseY >= y && mouseY <= y + rectHeight) {
+        return true;
+    } else {
+        return false;
+    }
 }

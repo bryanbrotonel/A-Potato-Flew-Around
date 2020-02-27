@@ -5,6 +5,7 @@
     INFO 3225 S10 
 */
 boolean gameLose = false;
+boolean gameRestart = false;
 int gameScore = 0;
 int numberOfClouds = 0;
 int cloudsLimit = 5;
@@ -32,7 +33,14 @@ void draw() {
     background(255, 204, 0);
 
     drawClouds();
+
+    game();
+}
+
+void game() {
+
     drawPotatos();
+    showScore();
 
     pushMatrix();
 
@@ -41,11 +49,26 @@ void draw() {
     character.drawCharacter();
 
     popMatrix();
+
+    playAgain();
+
+    text(gameLose ? "true" : "false", 100,100);
+    text(character.getXPosition(), 100, 110);
+    text(character.getYPosition(), 100, 120);
 }
 
-void game() {
-    if (gameLose)
-        println("you lost!");
+void showScore() {
+
+    String scoreText = "Score: " + gameScore;
+
+    fill(255);
+    noStroke();
+    rect(width - 225, 25, 200, 50);
+
+    fill(0);
+    textSize(19);
+    textAlign(CENTER, CENTER);
+    text(scoreText, width - 225, 25, 200, 50);
 }
 
 

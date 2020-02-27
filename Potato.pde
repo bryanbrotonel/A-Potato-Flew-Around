@@ -17,7 +17,7 @@ public class Potato {
         yPosition = -height;
         potatoWidth = potatoSize[0];
         potatoHeight = potatoSize[0];
-        potatoSpeed = speed(potatoLevel);
+        potatoSpeed = gameLose ? 0 : speed(potatoLevel);
     }
     
     final void display() {

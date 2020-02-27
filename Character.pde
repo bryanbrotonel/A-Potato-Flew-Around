@@ -57,6 +57,14 @@ public class Character {
         return yPosition;
     }
 
+    final void setXPosition(float position) {
+        xPosition = position;
+    }
+
+    final void setYPosition(float position) {
+        yPosition = position;
+    }
+
     final float getCharacterWidth() {
         return characterWidth;
     }

@@ -17,7 +17,9 @@ class Cloud {
     }
     
     void display() {
-        yPosition = yPosition < height + cloudHeight ? yPosition += 0.5 : -cloudHeight;
+        float cloudSpeed = gameLose ? 0 : 0.5;
+
+        yPosition = yPosition < height + cloudHeight ? yPosition += cloudSpeed : -cloudHeight;
                 
         fill(255);
 
