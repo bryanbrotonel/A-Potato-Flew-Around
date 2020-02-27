@@ -2,6 +2,10 @@ public class Character {
 
     private float characterWidth;
     private float characterHeight;
+    private boolean north, south, west, east;
+
+    private float movementSpeed = 2;
+    private float boundary = 100;
     private float xPosition = 0;
     private float yPosition = 0;
 
@@ -13,7 +17,8 @@ public class Character {
     final void drawCharacter() {
 
         pushMatrix();
-        
+        moveCharacter();
+
         translate(xPosition, yPosition);
 
         noStroke();
@@ -26,38 +31,24 @@ public class Character {
         popMatrix();
     }
 
-    final void characterMovement(int keyCode) {
-        float movement = 10;
-        float xBoundary = (height / 2) - 280;
-        float yBoundary = (width / 2) - 200;
-
-        switch (keyCode) {
-            case UP:
-                println("up");
-                if (yPosition > -xBoundary)
-                    yPosition -= movement;
-                break;
-            case DOWN:
-                println("down");
-                if (yPosition < xBoundary)
-                    yPosition += movement;            
-                break;
-            case LEFT:
-                println("left");
-                if (xPosition > -yBoundary)
-                    xPosition -= movement;            
-                break;
-            case RIGHT:
-                println("right");
-                if (xPosition < yBoundary)
-                    xPosition += movement;            
-                break;
-            default:
-                break;
-        }
-    
+    final void setDirection(int key, boolean direction) {
+        if (key == UP | key == 'W') north = direction;
+        else if (key == DOWN | key == 'S') south = direction;
+        else if (key == LEFT | key == 'A') west = direction;
+        else if (key == RIGHT | key == 'D') east = direction;
     }
-    
+
+    final void moveCharacter() {
+        if (!gameLose) {
+            xPosition += (east ? movementSpeed : 0) - (west ? movementSpeed : 0);
+
+            yPosition += (south ? movementSpeed : 0) - (north ? movementSpeed : 0);
+
+            xPosition = constrain(xPosition, -boundary * 2.5, boundary * 2.5);
+            yPosition = constrain(yPosition, -boundary, boundary);
+        }
+    }
+
     final float getXPosition() {
         return xPosition;
     }
@@ -73,5 +64,5 @@ public class Character {
     final float getCharacterHeight() {
         return characterHeight;
     }
-    
+
 }

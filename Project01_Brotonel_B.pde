@@ -4,7 +4,6 @@
     100334828
     INFO 3225 S10 
 */
-
 boolean gameLose = false;
 int gameScore = 0;
 int numberOfClouds = 0;
@@ -13,8 +12,8 @@ int cloudsLimit = 5;
 float xStartPosition, yStartPosition;
 int time;
 
-ArrayList<Cloud> clouds = new ArrayList<Cloud>();
-ArrayList<Potato> potatos = new ArrayList<Potato>();
+ArrayList < Cloud > clouds = new ArrayList < Cloud > ();
+ArrayList < Potato > potatos = new ArrayList < Potato > ();
 
 Character character;
 
@@ -49,21 +48,26 @@ void game() {
         println("you lost!");
 }
 
+
 void keyPressed() {
-  if (key == CODED) {
-      character.characterMovement(keyCode);
-  }
+    if (key == CODED)
+        character.setDirection(keyCode, true);
+}
+
+void keyReleased() {
+    if (key == CODED)
+        character.setDirection(keyCode, false);
 }
 
 
 void drawPotatos() {
 
     if (potatos.size() < 5) {
-        int random =  (int) random(1,3);
+        int random = (int) random(1, 3);
         potatos.add(new Potato((random)));
     }
 
-    for (Potato potato : potatos) {
+    for (Potato potato: potatos) {
         potato.display();
     }
 }
@@ -79,6 +83,6 @@ void drawClouds() {
 
     }
 
-    for (Cloud cloud : clouds)
+    for (Cloud cloud: clouds)
         cloud.display();
 }
