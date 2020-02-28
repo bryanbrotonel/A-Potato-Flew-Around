@@ -6,8 +6,8 @@ float globalSliderXPos, globalSliderYPos;
 color day = color(135,206,235);
 color night = color(25,25,112);
 
-CloudToggle toggle = new CloudToggle(130, 5, 55, 25, 7);
-SkySlider slider = new SkySlider(90, 50, 100, 15);
+CloudToggle toggle = new CloudToggle(130, 25, 55, 25, 7);
+SkySlider slider = new SkySlider(100, 75, 90, 15);
 Sky sky = new Sky(day, night);
 
 void displayVisuals() {
@@ -26,7 +26,7 @@ void displaySettings() {
     fill(255);
     noStroke();
     textAlign(LEFT);
-    rect(0, 0, 200, 200);
+    rect(0, 0, 200, 100);
 
     toggle.display();
 

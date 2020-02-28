@@ -11,7 +11,7 @@ void intro() {
     int playXPos = !intro ? width : width / 2 - halfplayWidth;
     int playYPos = !intro ? height : height / 2 - halfplayHeight;
 
-    fill(255);
+fill(236, 113, 44);
     noStroke();
 
     pushMatrix();
@@ -19,7 +19,7 @@ void intro() {
     
     rect(0, 0, playWidth, playHeight);
 
-    fill(0);
+    fill(255);
     textSize(25);
     String welcomeMessage = "A Potato Flew Around";
 
@@ -50,10 +50,10 @@ void playButton(int xPosition, int yPosition) {
     translate(xPosition - halfBttonWidth, yPosition + padding);
 
     fill(2435);
-    stroke(0);
+    stroke(255);
     rect(0, 0, buttonWidth, buttonHeight);
 
-    fill(0);
+    fill(255);
     textSize(12);
     textAlign(CENTER, CENTER);
     text(play, 0, 0, buttonWidth, buttonHeight);

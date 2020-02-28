@@ -23,7 +23,7 @@ class SkySlider {
     void display() {
         fill(0);
         textSize(15);
-        text("Sky Slider", 10,40, 200, 50);
+        text("Sky Slider", 10,sliderYPos - 10, 200, 50);
 
         strokeWeight(2);
         line(slideLineStartXPos, sliderYPos, slideLineEndXPos, sliderYPos);

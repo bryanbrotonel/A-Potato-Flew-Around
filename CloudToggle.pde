@@ -19,7 +19,7 @@ class CloudToggle {
 
         fill(0);
         textSize(15);
-        text("Toggle Clouds", 10, 10, 200, 50);
+        text("Toggle Clouds", 10, toggleYPos + 5, 200, 50);
 
         fill(230);
         stroke(0);
@@ -36,7 +36,7 @@ class CloudToggle {
         }
 
         int globalToggleXPos = width - 225 + toggleXPos;
-        int globalToggleYPos = 100 - toggleYPos;
+        int globalToggleYPos = 100 - toggleYPos + 40;
 
         overCloudsToggle = overRect(globalToggleXPos, globalToggleYPos, toggleWidth, toggleHeight);
 

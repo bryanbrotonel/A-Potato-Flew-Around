@@ -41,15 +41,6 @@ void draw() {
         intro();
     else if (!intro)
         game();
-    
-        textAlign(LEFT);
-    text(gameLose ? "true" : "false", 100,100);
-    text(character.getXPosition(), 100, 110);
-    text(character.getYPosition(), 100, 120);
-    text("Potato size:" + potatos.size(), 100, 130);
-    text("Potatos flew: " + potatosFlew, 100, 140);
-    text("Keycode: " + k, 100, 150);
-            text("Clouds size:" + clouds.size(), 100, 160);
 }
 
 void game() {
@@ -108,8 +99,9 @@ void mousePressed() {
     if (overPlayAgainButton)
         restartGame();
 
-    if (overCloudsToggle)
+    if (overCloudsToggle) {
         drawClouds = !drawClouds;
+    }
     
     if (overSkySlider)
         updateSlider = true;
@@ -121,10 +113,12 @@ void mouseReleased() {
 
 void drawPotatos() {
 
-    if (!intro && potatos.size() < 5) {
-        int random = (int) random(1, 3);
+    if (!intro && millis() - time >= 1000 && potatos.size() < 5) {
+        int random = (int) random(2, 3);
         potatos.add(new Potato((random)));
+        time = millis();
     }
+    
   for (int i = potatos.size()-1; i >= 0; i--) {
         Potato potato = potatos.get(i);
 

@@ -13,7 +13,7 @@ public class Potato {
 
         float[] potatoSize = potatoSize(level);
         
-        xPosition = random(0, width - 10);
+        xPosition = random(200, width - 200);
         yPosition = -height;
         potatoWidth = potatoSize[0];
         potatoHeight = potatoSize[0];
@@ -91,7 +91,7 @@ public class Potato {
         float characterWidth = character.getCharacterWidth();
         float characterHeight = character.getCharacterHeight();
 
-        return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterHeight) / 2;
+        return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterWidth) / 2;
     }
 
     boolean getPotatoFlew() {
