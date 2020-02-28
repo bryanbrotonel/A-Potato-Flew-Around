@@ -4,15 +4,17 @@
     100334828
     INFO 3225 S10 
 */
+
 boolean gameLose = false;
 boolean gameRestart = false;
+
 int gameScore = 0;
 int numberOfClouds = 0;
 int potatosFlew = 0;
 int cloudsLimit = 5;
 
 float xStartPosition, yStartPosition;
-int time;
+int time, k = 0;
 
 ArrayList < Cloud > clouds = new ArrayList < Cloud > ();
 ArrayList < Potato > potatos = new ArrayList < Potato > ();
@@ -21,7 +23,7 @@ Character character;
 
 void setup() {
     frameRate(180);
-    smooth();
+
     size(960, 720);
 
     xStartPosition = width / 2;
@@ -31,10 +33,15 @@ void setup() {
 }
 
 void draw() {
-    background(255, 204, 0);
-
-    drawClouds();
-
+    textAlign(LEFT);
+    text(gameLose ? "true" : "false", 100,100);
+    text(character.getXPosition(), 100, 110);
+    text(character.getYPosition(), 100, 120);
+    text("Potato size:" + potatos.size(), 100, 130);
+    text("Potatos flew: " + potatosFlew, 100, 140);
+    text("Keycode: " + k, 100, 150);
+    
+    displayVisuals();
     game();
 }
 
@@ -52,14 +59,6 @@ void game() {
     popMatrix();
 
     playAgain();
-    
-    textAlign(LEFT);
-    text(gameLose ? "true" : "false", 100,100);
-    text(character.getXPosition(), 100, 110);
-    text(character.getYPosition(), 100, 120);
-    text("Potato size:" + potatos.size(), 100, 130);
-    text("Potatos flew: " + potatosFlew, 100, 140);
-
 }
 
 void showScore() {
@@ -76,17 +75,29 @@ void showScore() {
     text(scoreText, width - 225, 25, 200, 50);
 }
 
-
 void keyPressed() {
-    if (key == CODED)
+    k = key;
+
+    if (key == 'c' || key == 'C')
+        drawClouds = !drawClouds;
+    else
         character.setDirection(keyCode, true);
+
 }
 
 void keyReleased() {
-    if (key == CODED)
-        character.setDirection(keyCode, false);
+    character.setDirection(keyCode, false);
+    k = 0;
 }
 
+void mousePressed() {
+
+    if (overPlayAgainButton)
+        restartGame();
+
+    if (overCloudsToggle)
+        drawClouds = !drawClouds;
+}
 
 void drawPotatos() {
 
@@ -104,19 +115,4 @@ void drawPotatos() {
             gameScore++;
         }
   }
-}
-
-void drawClouds() {
-
-    if (millis() - time >= 5000 && numberOfClouds < cloudsLimit) {
-
-        clouds.add(new Cloud());
-
-        time = millis();
-        numberOfClouds++;
-
-    }
-
-    for (Cloud cloud: clouds)
-        cloud.display();
 }

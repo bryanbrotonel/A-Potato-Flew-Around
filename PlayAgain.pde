@@ -81,9 +81,3 @@ void restartGame() {
 
     gameLose = false;
 }
-
-void mousePressed() {
-    if (overPlayAgainButton) {
-        restartGame();
-    }
-}

@@ -15,12 +15,12 @@ class Cloud {
         cloudType = random(3, 8);
 
     }
-    
+
     void display() {
         float cloudSpeed = gameLose ? 0 : 0.5;
 
         yPosition = yPosition < height + cloudHeight ? yPosition += cloudSpeed : -cloudHeight;
-                
+
         fill(255);
 
         rect(xPosition, yPosition, cloudWidth, cloudHeight, cloudType);
