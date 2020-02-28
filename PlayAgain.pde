@@ -69,7 +69,6 @@ void playAgainButton(int xPosition, int yPosition) {
 }
 
 void restartGame() {
-    println("restart game");
 
     potatos.clear();
     clouds.clear();

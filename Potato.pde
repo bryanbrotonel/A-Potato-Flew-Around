@@ -33,7 +33,6 @@ public class Potato {
         if (yPosition < height + potatoHeight)
             yPosition += potatoSpeed;
         else {
-            // println("potatos flew!");
             potatoFlew = true;
             potatoSpeed = 0;
         }

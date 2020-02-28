@@ -1,43 +1,43 @@
 boolean drawClouds = true;
 boolean overCloudsToggle = false;
 
+float globalSliderXPos, globalSliderYPos;
+
+color day = color(135,206,235);
+color night = color(25,25,112);
+
+CloudToggle toggle = new CloudToggle(130, 5, 55, 25, 7);
+SkySlider slider = new SkySlider(90, 50, 100, 15);
+Sky sky = new Sky(day, night);
+
 void displayVisuals() {
-    drawSky();
+
+    sky.updateSky(sliderValue);
+    sky.drawSky();
+
     drawClouds();
+
+    showScore();
 
     displaySettings();
 }
 
 void displaySettings() {
-    CloudToggle toggle = new CloudToggle(130, 5, 55, 25, 7);
 
     pushMatrix();
     translate(width - 225, 100);
 
     fill(255);
     noStroke();
+    textAlign(LEFT);
     rect(0, 0, 200, 200);
 
-    textAlign(LEFT);
-
     toggle.display();
-    skySlider();
+
+    slider.update();
+    slider.display();
 
     popMatrix();
-}
-
-void drawSky() {
-    color skyColour1 = color(135,206,235);
-    color skyColour2 = color(25,25,112);
-
-    background(skyColour1);
-}
-
-void skySlider() {
-    fill(0);
-    textSize(15);
-    text("Sky Slider", 10,40, 200, 50);
-
 }
 
 void drawClouds() {
@@ -55,3 +55,4 @@ void drawClouds() {
         for (Cloud cloud: clouds)
             cloud.display();
 }
+

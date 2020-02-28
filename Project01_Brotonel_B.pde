@@ -48,7 +48,6 @@ void draw() {
 void game() {
 
     drawPotatos();
-    showScore();
 
     pushMatrix();
 
@@ -97,6 +96,13 @@ void mousePressed() {
 
     if (overCloudsToggle)
         drawClouds = !drawClouds;
+    
+    if (overSkySlider)
+        updateSlider = true;
+}
+
+void mouseReleased() {
+    updateSlider = false;
 }
 
 void drawPotatos() {
