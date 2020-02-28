@@ -29,7 +29,7 @@ void setup() {
     xStartPosition = width / 2;
     yStartPosition = height * 0.7;
 
-    character = new Character(40, 10);
+    character = new Character(100, 200);
 }
 
 void draw() {

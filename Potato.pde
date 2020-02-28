@@ -87,11 +87,11 @@ public class Potato {
 
         float characterXPosition = xStartPosition + character.getXPosition();
         float characterYPosition = yStartPosition + character.getYPosition();
+
         float characterWidth = character.getCharacterWidth();
         float characterHeight = character.getCharacterHeight();
 
-
-        return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterWidth) / 2;
+        return dist(characterXPosition, characterYPosition, xPosition, yPosition) < (potatoWidth + characterHeight) / 2;
     }
 
     boolean getPotatoFlew() {
