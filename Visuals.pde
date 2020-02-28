@@ -16,10 +16,6 @@ void displayVisuals() {
     sky.drawSky();
 
     drawClouds();
-
-    showScore();
-
-    displaySettings();
 }
 
 void displaySettings() {
@@ -42,7 +38,7 @@ void displaySettings() {
 
 void drawClouds() {
 
-    if (millis() - time >= 5000 && numberOfClouds < cloudsLimit) {
+    if (millis() - time >= 3000 && numberOfClouds < cloudsLimit) {
 
         clouds.add(new Cloud());
 

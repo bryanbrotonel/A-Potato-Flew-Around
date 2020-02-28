@@ -7,6 +7,7 @@
 
 boolean gameLose = false;
 boolean gameRestart = false;
+boolean intro = true;
 
 int gameScore = 0;
 int numberOfClouds = 0;
@@ -33,19 +34,29 @@ void setup() {
 }
 
 void draw() {
-    textAlign(LEFT);
+    
+    displayVisuals();
+
+    if (intro)
+        intro();
+    else if (!intro)
+        game();
+    
+        textAlign(LEFT);
     text(gameLose ? "true" : "false", 100,100);
     text(character.getXPosition(), 100, 110);
     text(character.getYPosition(), 100, 120);
     text("Potato size:" + potatos.size(), 100, 130);
     text("Potatos flew: " + potatosFlew, 100, 140);
     text("Keycode: " + k, 100, 150);
-    
-    displayVisuals();
-    game();
+            text("Clouds size:" + clouds.size(), 100, 160);
 }
 
 void game() {
+
+    showScore();
+
+    displaySettings();
 
     drawPotatos();
 
@@ -91,6 +102,9 @@ void keyReleased() {
 
 void mousePressed() {
 
+    if (overplayButton)
+        intro = false;
+
     if (overPlayAgainButton)
         restartGame();
 
@@ -107,7 +121,7 @@ void mouseReleased() {
 
 void drawPotatos() {
 
-    if (potatos.size() < 5) {
+    if (!intro && potatos.size() < 5) {
         int random = (int) random(1, 3);
         potatos.add(new Potato((random)));
     }

@@ -57,9 +57,6 @@ public class Character {
         rect(bodyWidth / 4, bodyHeight / 2, legWidth, legLength);
         rect(-bodyWidth / 2, bodyHeight / 2, legWidth, legLength);
 
-        fill(255, 0, 0);
-        ellipse(0, 0, 5, 5);
-
         popMatrix();
     }
 
@@ -71,7 +68,7 @@ public class Character {
     }
 
     final void moveCharacter() {
-        if (!gameLose) {
+        if (!gameLose || intro) {
             xPosition += (east ? movementSpeed : 0) - (west ? movementSpeed : 0);
 
             yPosition += (south ? movementSpeed : 0) - (north ? movementSpeed : 0);
